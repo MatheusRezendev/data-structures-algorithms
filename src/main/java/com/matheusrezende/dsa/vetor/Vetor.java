@@ -1,6 +1,4 @@
-package com.matheusrezende.dsa;
-
-import java.util.Arrays;
+package com.matheusrezende.dsa.vetor;
 
 public class Vetor {
 
@@ -39,6 +37,7 @@ public class Vetor {
     //metodo que adiciona elementos no array com boolean
 
     public boolean adiciona(String elemento) {
+        aumentaCapacidade();
         if (this.tamanho < this.elementos.length) {
             this.elementos[this.tamanho] = elemento;
             this.tamanho++;
@@ -51,14 +50,24 @@ public class Vetor {
         if(!(posicao >= 0 && posicao < tamanho)){
             throw new IllegalArgumentException("Posicao invalida!");
         }
-
+        //move todos elementos
         for(int i = this.tamanho - 1; i >= posicao; i--){
             this.elementos[i + 1] = this.elementos[i];
         }
         this.elementos[posicao] = elemento;
         this.tamanho++;
 
-        return false;
+        return true;
+    }
+
+    private void aumentaCapacidade(){
+        if(this.tamanho == this.elementos.length){
+            String[] newElementos = new String[this.elementos.length * 2];
+            for (int i =0; i<this.elementos.length; i++){
+                newElementos[i] = this.elementos[i];
+            }
+            this.elementos = newElementos;
+        }
     }
 
     public String busca(int posicao){
@@ -66,6 +75,18 @@ public class Vetor {
             throw new IllegalArgumentException("Posicao invalida");
         }
         return this.elementos[posicao];
+    }
+
+    public void remover(int posicao){
+        if (!(posicao >= 0 && posicao < this.tamanho)) {
+            throw new IllegalArgumentException("Posicao invalida");
+        }
+
+        for (int i = posicao; i < this.tamanho - 1; i++){
+            this.elementos[i] = this.elementos[i + 1];
+        }
+
+        this.tamanho--;
     }
 
     public int busca(String elemento){

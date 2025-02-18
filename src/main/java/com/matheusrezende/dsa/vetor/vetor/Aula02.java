@@ -1,4 +1,6 @@
-package com.matheusrezende.dsa;
+package com.matheusrezende.dsa.vetor.vetor;
+
+import com.matheusrezende.dsa.vetor.Vetor;
 
 public class Aula02 {
 
