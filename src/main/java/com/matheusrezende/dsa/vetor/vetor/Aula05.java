@@ -1,6 +1,8 @@
-package com.matheusrezende.dsa;
+package com.matheusrezende.dsa.vetor.vetor;
 
-public class Aula06 {
+import com.matheusrezende.dsa.vetor.Vetor;
+
+public class Aula05 {
     public static void main(String[] args) {
 
         Vetor vetor = new Vetor(10);
@@ -9,7 +11,6 @@ public class Aula06 {
         vetor.adiciona("elemento 2");
         vetor.adiciona("elemento 3");
 
-        System.out.println(vetor.busca("elemento 2"));
-        System.out.println(vetor.busca("elemento 4"));
+        System.out.println(vetor.busca(0));
     }
 }
